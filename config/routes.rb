@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     get :users, to: "devise/sessions#new"
   end
+
+  # resources :users, only: :show
+  get 'user/:id', to: 'users#show', as: 'user'
+  resources :rooms, only: [:index, :create]
 end
