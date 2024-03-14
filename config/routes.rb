@@ -9,5 +9,7 @@ Rails.application.routes.draw do
 
   # resources :users, only: :show
   get 'user/:id', to: 'users#show', as: 'user'
-  resources :rooms, only: [:index, :create]
+  resources :rooms, only: [:index, :create, :show] do
+    resources :messages, only: [:create], module: :rooms
+  end
 end
