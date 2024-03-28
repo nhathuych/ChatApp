@@ -5,9 +5,9 @@ class User < ApplicationRecord
 
   has_many :messages
 
-  # broadcast a message after a new user is created 
-  # I won't have to refresh the page to see the new user appear
-  after_create_commit { broadcast_append_to "users" }
+  # broadcast a new user is created in users channel
+  # won't have to refresh the page to see the new user appear
+  after_create_commit { broadcast_append_to :users, target: 'js-users' }
 
   scope :all_except, -> (user) { where.not(id: user) }
 end
