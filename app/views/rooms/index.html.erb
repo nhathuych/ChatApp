@@ -25,7 +25,7 @@
 
         <% # create & subcribe room channel %>
         <%= turbo_stream_from(@current_room) %>
-        <div id="js-messages" class="messages">
+        <div id="js-messages" class="messages" data-controller="scroll">
           <%= render @messages %>
         </div>
 
