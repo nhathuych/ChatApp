@@ -31,6 +31,7 @@
 !/tmp/storage/.keep
 
 /public/assets
+/dump.rdb
 /.DS_Store
 /.tool-versions
 

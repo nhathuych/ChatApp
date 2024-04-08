@@ -1,7 +1,9 @@
 <h1>Turbo Chat</h1>
 
 <% if current_user %>
-  <%= link_to "Start Chatting", rooms_path() %>
+  <%= link_to "Start Chatting", rooms_path() %><br/>
+  <%= image_tag(current_user.avatar_thumbnail) %><br/>
+  <%= link_to "Edit Account", edit_user_registration_path() %>
   <%= button_to "Logout", destroy_user_session_path(), method: :delete %>
 <% else %>
   <%= link_to "Login", new_user_session_path() %>
