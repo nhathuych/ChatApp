@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_many :messages
   has_one_attached :avatar
 
+  # away: online but not visit a room page
   enum status: { offline: 0, online: 1, away: 2 }
 
   after_commit :add_default_avatar, on: [:create, :update]
@@ -39,7 +40,6 @@ class User < ApplicationRecord
   private
 
   def add_default_avatar
-    # return avatar.purge if avatar.attached?
     return if avatar.attached?
 
     avatar.attach(

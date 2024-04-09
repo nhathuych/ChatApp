@@ -1,3 +1,6 @@
+<%= turbo_frame_tag :appearance_channel %>
+<div id="js-appearance-channel"></div>
+
 <div id="chatroom-container" class="row bg-secondary text-light">
   <div id="side-panel" class="col-md-4 col-sm-4">
     <div class="d-flex align-items-center justify-content-between current-user-logged-in">
@@ -10,15 +13,16 @@
       <div class="no-underline ms-2 me-auto username text-dark"><%= current_user.email %></div>
     </div>
 
-    <h4>Users</h4>
+    <h4 class="text-dark">Users</h4>
     <% # create & subcribe users channel %>
     <%= turbo_stream_from(:users) %>
     <div id="js-users">
       <%= render @users %>
     </div>
 
-    <h4>Rooms</h4>
+    <h4 class="text-dark mt-4">New Room</h4>
     <%= render 'form' %>
+
     <% # create & subcribe rooms channel %>
     <%= turbo_stream_from(:rooms) %>
     <div id="js-rooms">

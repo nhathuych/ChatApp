@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!
   before_action :load_current_room, only: :show
+  before_action :set_user_status
 
   def index
     @room  = Room.new
@@ -13,7 +14,7 @@ class RoomsController < ApplicationController
     @rooms = Room.public_rooms
 
     @message  = Message.new
-    @messages = @current_room.messages.includes(:user).order(id: :asc)
+    @messages = @current_room.messages.includes(user: [avatar_attachment: [blob: :variant_records]]).order(id: :asc)
 
     @users = User.all_except(current_user)
 
@@ -28,5 +29,10 @@ class RoomsController < ApplicationController
 
   def load_current_room
     @current_room = Room.find(params[:id])
+  end
+
+  def set_user_status
+    # when user visit a room page, it's online
+    current_user.update!(status: User.statuses[:online]) if current_user
   end
 end
