@@ -1,8 +1,12 @@
 <% is_active = @current_room&.participant?(@current_room, user) ? 'active' : '' %>
 
-<li class="list-group-item d-flex align-items-center justify-content-between user-list-item <%= is_active%> %>">
-  <div>
+<li class="d-flex align-items-center justify-content-between list-group-item user-list-item <%= is_active%> %>">
+  <div class="icon-container mt-2">
     <%= link_to image_tag(user.chat_avatar, class: "chat-pfp") %>
+    <%= turbo_stream_from :user_status %>
+
+    <div><%= render "users/status", user: user %></div>
   </div>
+
   <%= link_to user.email, user, class: 'no-underline ms-2 me-auto username', data: { turbo: false } %>
 </li>

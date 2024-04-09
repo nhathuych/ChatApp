@@ -74,7 +74,6 @@ body {
   background-color: #343a40 !important;
 }
 
-
 .name {
   margin-top: 15px;
   padding-bottom: 0px;
@@ -85,4 +84,25 @@ body {
   margin-top: 0px;
   padding-bottom: 0px;
   margin-bottom: 0px;
+}
+
+.current-user-logged-in {
+  display: block;
+  padding: .75rem 1.25rem;
+}
+
+.icon-container {
+  width: 50px;
+  height: 50px;
+  position: relative;
+}
+.status-circle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  right: 10px;
+  bottom: 10px;
+  background-color: grey;
+  border-radius: 50%;
+  border: 2px solid white;
 }
