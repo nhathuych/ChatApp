@@ -1,3 +1,8 @@
-<div>
-  <%= link_to user.email, user, class: 'no-underline' %>
-</div>
+<% is_active = @current_room&.participant?(@current_room, user) ? 'active' : '' %>
+
+<li class="list-group-item d-flex align-items-center justify-content-between user-list-item <%= is_active%> %>">
+  <div>
+    <%= link_to image_tag(user.chat_avatar, class: "chat-pfp") %>
+  </div>
+  <%= link_to user.email, user, class: 'no-underline ms-2 me-auto username', data: { turbo: false } %>
+</li>

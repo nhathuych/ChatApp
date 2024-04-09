@@ -19,7 +19,7 @@ class User < ApplicationRecord
     avatar.variant(resize_to_limit: [150, 150]).processed
   end
 
-  def avatar_thumbnail
+  def chat_avatar
     avatar.variant(resize_to_limit: [50, 50]).processed
   end
 
