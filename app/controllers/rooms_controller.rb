@@ -14,7 +14,9 @@ class RoomsController < ApplicationController
     @rooms = Room.public_rooms
 
     @message  = Message.new
-    @messages = @current_room.messages.includes(user: [avatar_attachment: [blob: :variant_records]]).order(id: :asc)
+    all_messages = @current_room.messages.includes(user: [avatar_attachment: [blob: :variant_records]]).order(id: :desc)
+    @pagy, @messages = pagy(all_messages, items: 10)
+    @messages = @messages.reverse
 
     @users = User.all_except(current_user)
 

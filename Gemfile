@@ -29,6 +29,7 @@ gem "jbuilder"
 gem "pry"
 gem "devise", "~> 4.9"
 gem 'mini_magick', '~> 4.12'
+gem 'pagy', '~> 8.1'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"

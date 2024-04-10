@@ -38,7 +38,11 @@
         <% # create & subcribe room channel %>
         <%= turbo_stream_from(@current_room) %>
         <div id="js-messages" class="messages" data-controller="scroll">
-          <%= render @messages %>
+          <%= turbo_frame_tag :page_handler %>
+          <%= render "messages/pager", pagy: @pagy %>
+          <div id="js-messages-container">
+            <%= render @messages %>
+          </div>
         </div>
 
         <%= render 'messages/form' %>
